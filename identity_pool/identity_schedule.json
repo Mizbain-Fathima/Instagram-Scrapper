@@ -1,0 +1,30 @@
+{
+  "user_1": {
+    "wake_hour": 10,
+    "sleep_hour": 22
+  },
+  "user_2": {
+    "wake_hour": 10,
+    "sleep_hour": 23
+  },
+  "user_3": {
+    "wake_hour": 10,
+    "sleep_hour": 23
+  },
+  "user_4": {
+    "wake_hour": 8,
+    "sleep_hour": 23
+  },
+  "user_5": {
+    "wake_hour": 8,
+    "sleep_hour": 22
+  },
+  "user_6": {
+    "wake_hour": 9,
+    "sleep_hour": 22
+  },
+  "user_7": {
+    "wake_hour": 9,
+    "sleep_hour": 22
+  }
+}

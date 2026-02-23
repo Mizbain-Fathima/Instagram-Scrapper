@@ -1,0 +1,14 @@
+{
+  "user_1": {
+    "blocked": true
+  },
+  "user_2": {
+    "blocked": true
+  },
+  "user_3": {
+    "blocked": false
+  },
+  "user_4": {
+    "blocked": false
+  }
+}
