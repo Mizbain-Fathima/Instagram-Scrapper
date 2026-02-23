@@ -1,0 +1,91 @@
+[
+  {
+    "domain": ".instagram.com",
+    "expiry": 1803375603,
+    "httpOnly": true,
+    "name": "sessionid",
+    "path": "/",
+    "sameSite": "None",
+    "secure": true,
+    "value": "48343483390%3A5AUyRbE9EhuTd5%3A1%3AAYghivHHduNldaENKubaXelgVm6IsxmEwzaqiKP9qA"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1772444404,
+    "httpOnly": false,
+    "name": "dpr",
+    "path": "/",
+    "sameSite": "None",
+    "secure": true,
+    "value": "1.5"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1803374913,
+    "httpOnly": true,
+    "name": "ig_did",
+    "path": "/",
+    "sameSite": "None",
+    "secure": true,
+    "value": "D0874ABE-93E8-4960-B655-FC145AF785BD"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1806399608,
+    "httpOnly": false,
+    "name": "csrftoken",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "8DkQNJxWiVyQlgCRo3KW-h"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1806398913,
+    "httpOnly": true,
+    "name": "datr",
+    "path": "/",
+    "sameSite": "None",
+    "secure": true,
+    "value": "vB2caXZ6jvcEOSzZ1Hd6lLG6"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1772444404,
+    "httpOnly": false,
+    "name": "wd",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "1283x643"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1806398913,
+    "httpOnly": false,
+    "name": "mid",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "aZwdvAALAAGZpt2pMy_fzdtFTwAF"
+  },
+  {
+    "domain": ".instagram.com",
+    "expiry": 1779615608,
+    "httpOnly": false,
+    "name": "ds_user_id",
+    "path": "/",
+    "sameSite": "None",
+    "secure": true,
+    "value": "48343483390"
+  },
+  {
+    "domain": ".instagram.com",
+    "httpOnly": true,
+    "name": "rur",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "\"VLL\\05448343483390\\0541803375603:01fe076417d961c302692ef1330c64f0a91d90f0d5d3f1c84effc0c27df85d0fd4ff1f5f\""
+  }
+]
