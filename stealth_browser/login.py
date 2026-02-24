@@ -7,5 +7,4 @@ driver.get("https://www.instagram.com/")
 input("🔐 Login manually then press ENTER...")
 
 save_cookies(driver)
-driver.quit()
 print("✅ Session saved successfully.")

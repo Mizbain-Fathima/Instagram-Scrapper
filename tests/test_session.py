@@ -1,5 +1,5 @@
-from .browser import create_browser
-from .cookie_store import load_cookies
+from ..stealth_browser.browser import create_browser
+from ..stealth_browser.cookie_store import load_cookies
 
 driver = create_browser()
 load_cookies(driver)

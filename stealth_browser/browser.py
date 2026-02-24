@@ -3,17 +3,15 @@ import os
 
 PROFILE_PATH = os.path.join(os.getcwd(), "ig_profile")
 
-def create_browser():
+def create_browser(headless=False):
 
     options = uc.ChromeOptions()
 
-    # persistent real browser identity
-    options.add_argument(f"--user-data-dir={PROFILE_PATH}")
-    options.add_argument("--profile-directory=Default")
+    if headless:
+        options.add_argument("--headless=new")
 
-    # stealth flags
-    options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("--start-maximized")
+    options.add_argument("--disable-blink-features=AutomationControlled")
 
-    driver = uc.Chrome(options=options, headless=False)
+    driver = uc.Chrome(options=options)
     return driver

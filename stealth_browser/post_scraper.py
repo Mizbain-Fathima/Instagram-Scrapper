@@ -1,67 +1,68 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from .browser import create_browser
-from .cookie_store import load_cookies
+from datetime import datetime
+from .navigator import open_page, human_pause
 import time
+import re
 
 
-def scrape_post(shortcode):
-
-    driver = create_browser()
-    driver.get("https://www.instagram.com/")
-
-    load_cookies(driver)
-    driver.refresh()
+def scrape_post(shortcode, driver):
 
     url = f"https://www.instagram.com/p/{shortcode}/"
-    driver.get(url)
+    open_page(driver, url)
 
-    wait = WebDriverWait(driver, 20)
+    wait = WebDriverWait(driver, 25)
 
-    # Wait for like section
+    # wait for caption block (real hydration indicator)
     wait.until(
-        EC.presence_of_element_located((By.XPATH, "//section"))
+        EC.presence_of_element_located((By.XPATH, "//article//ul"))
     )
 
-    time.sleep(3)
+    human_pause(2,4)
 
-    # -------- LIKES --------
+    def safe(xpath):
+        try:
+            return driver.find_element(By.XPATH, xpath).text
+        except:
+            return None
+
+    username = safe("//header//a[contains(@href,'/')]")
+    caption = safe("//article//ul//span") or ""
+
+    hashtags = re.findall(r"#\w+", caption)
+
+    # likes
+    likes = safe("//section//span[contains(text(),'like')]/preceding::span[1]")
+
+    # scroll to load comments
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(2)
+
+    comments = safe("//section//span[contains(text(),'comment')]")
+
+    # date
     try:
-        likes_elem = driver.find_element(
-            By.XPATH,
-            "//section//span[contains(text(),'like')]/preceding::span[1]"
-        )
-        likes = likes_elem.text
+        post_date = driver.find_element(By.TAG_NAME, "time").get_attribute("datetime")
     except:
-        likes = None
+        post_date = None
 
-    # -------- CAPTION --------
-    try:
-        caption_elem = driver.find_element(
-            By.XPATH,
-            "//ul//span"
-        )
-        caption = caption_elem.text
-    except:
-        caption = ""
+    # media type
+    if driver.find_elements(By.TAG_NAME, "video"):
+        media_type = "video"
+    elif driver.find_elements(By.XPATH, "//div[@role='button' and @tabindex='0']"):
+        media_type = "carousel"
+    else:
+        media_type = "image"
 
-    # -------- COMMENTS COUNT --------
-    try:
-        comments_elem = driver.find_element(
-            By.XPATH,
-            "//section//span[contains(text(),'comment')]"
-        )
-        comments = comments_elem.text
-    except:
-        comments = None
-
-    result = {
+    return {
         "shortcode": shortcode,
+        "username": username,
         "likes": likes,
         "comments": comments,
-        "caption": caption
+        "caption": caption,
+        "hashtags": hashtags,
+        "media_type": media_type,
+        "posted_at": post_date,
+        "scraped_at": datetime.utcnow().isoformat()
     }
-
-    driver.quit()
-    return result
